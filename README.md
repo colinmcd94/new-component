@@ -5,6 +5,7 @@
 </p>
 
 # `new-component`
+
 ### Simple, customizable utility for adding new React components to your project.
 
 <img src="https://github.com/joshwcomeau/new-component/blob/master/docs/divider@2x.png?raw=true" width="888" height="100" role="presentation">
@@ -16,11 +17,12 @@ This project is a globally-installable CLI for adding new React components. It's
 <br />
 
 ## Features
-- Simple CLI interface for adding Component, PureComponent, or Stateless Functional components.
-- Uses [Prettier](https://github.com/prettier/prettier) to stylistically match the existing project.
-- Offers global config, which can be overridden on a project-by-project basis.
-- Colourful terminal output!
 
+* Simple CLI interface for adding Component, PureComponent, or Stateless Functional components.
+* Uses [Prettier](https://github.com/prettier/prettier) to stylistically match the existing project.
+* Offers global config, which can be overridden on a project-by-project basis.
+* Colourful terminal output!
+* Automatically creates separate `COMPONENT_NAME.css` file that is imported in component .js file.
 
 <br />
 
@@ -46,12 +48,13 @@ Your project will now have a new directory at `src/components/Button`. This dire
 
 ```jsx
 // `Button/index.js`
-export { default } from './Button';
+export { default } from "./Button";
 ```
 
 ```jsx
 // `Button/Button.js`
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import "./Button.css";
 
 class Button extends Component {
   render() {
@@ -62,10 +65,14 @@ class Button extends Component {
 export default Button;
 ```
 
+```css
+/* `Button/Button.css` */
+/* empty by default */
+```
+
 > This structure might appear odd to you, with an `index.js` that points to a named file. I've found this to be an optimal way to set up components; the `index.js` allows you to `import` from the directory (eg. `import Button from 'components/Button'`), while having `Button.js` means that you're never lost in a sea of `index.js` files in your editor.
 >
 > This structure is not currently configurable, but I'm happy to consider implementing alternatives!
-
 
 <br />
 
@@ -73,13 +80,11 @@ export default Button;
 
 Configuration can be done through 3 different ways:
 
-- Creating a global `.new-component-config.json` in your home directory (`~/.new-component-config.json`).
-- Creating a local `.new-component-config.json` in your project's root directory.
-- Command-line arguments.
+* Creating a global `.new-component-config.json` in your home directory (`~/.new-component-config.json`).
+* Creating a local `.new-component-config.json` in your project's root directory.
+* Command-line arguments.
 
 The resulting values are merged, with command-line values overwriting local values, and local values overwriting global ones.
-
-
 
 <br />
 
@@ -88,9 +93,10 @@ The resulting values are merged, with command-line values overwriting local valu
 ### Type
 
 Control the type of component created:
-- `class` for a traditional Component class (default),
-- `pure-class` for a PureComponent class,
-- `functional` for a stateless functional component.
+
+* `class` for a traditional Component class (default),
+* `pure-class` for a PureComponent class,
+* `functional` for a stateless functional component.
 
 Legacy `createClass` components are not supported, although support would be easy to add. Feel free to open an issue (or a PR!).
 
@@ -148,9 +154,11 @@ JSON config: `{ "prettierConfig": { "key": "value" } }`
   }
 }
 ```
+
 <br />
 
 ## Platform Support
+
 This has only been tested in macOS. I think it'd work fine in linux, but I haven't tested it. Windows is a big question mark (would welcome contribution here!).
 
 <br />
@@ -159,6 +167,6 @@ This has only been tested in macOS. I think it'd work fine in linux, but I haven
 
 This is a brand new thing! I'd like to add more functionality:
 
-- Built-in support for common style tools (CSS modules, Aphrodite, styled-components, etc).
-- Better error messaging, more edge-case support
-- Editor integrations :o
+* Built-in support for common style tools (CSS modules, Aphrodite, styled-components, etc).
+* Better error messaging, more edge-case support
+* Editor integrations :o
