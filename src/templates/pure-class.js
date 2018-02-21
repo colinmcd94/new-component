@@ -3,7 +3,7 @@ import "./COMPONENT_NAME.css";
 
 class COMPONENT_NAME extends PureComponent {
   constructor(props){
-    
+    super(props);
   }
 
   render() {

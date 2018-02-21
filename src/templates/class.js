@@ -3,7 +3,7 @@ import "./COMPONENT_NAME.css";
 
 class COMPONENT_NAME extends Component {
   constructor(props){
-    
+    super(props);
   }
 
   render() {
