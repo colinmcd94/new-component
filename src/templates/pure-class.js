@@ -3,7 +3,7 @@ import "./COMPONENT_NAME.css";
 
 class COMPONENT_NAME extends PureComponent {
   render() {
-    return <div />;
+    return (<div><div/>);
   }
 }
 
