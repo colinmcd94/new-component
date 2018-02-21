@@ -116,7 +116,7 @@ mkDirPromise(componentDir)
   })
   .then(template =>
     // We also need the `index.js` file, which allows easy importing.
-    writeFilePromise(cssPath, ".COMPONENT_NAME{\n\n}")
+    writeFilePromise(cssPath, "."+componentName+" {\n\n}")
   )
   .then(template => {
     logItemCompletion("CSS file built and saved to disk.");
