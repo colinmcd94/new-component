@@ -7,7 +7,7 @@ class COMPONENT_NAME extends PureComponent {
   }
 
   render() {
-    return (<div></div>);
+    return (<div class="COMPONENT_NAME"></div>);
   }
 }
 
